@@ -22,10 +22,22 @@ jobs:
       - name: Install PWABuilder CLI
         run: npm install -g @pwabuilder/cli
 
+      - name: Check PWABuilder version and help
+        run: |
+          echo "Attempting to run global pwabuilder:"
+          pwabuilder --version || echo "Global pwabuilder command failed or not found"
+          pwabuilder --help || echo "Global pwabuilder help failed or not found"
+          echo "Attempting to run npx @pwabuilder/cli:"
+          npx @pwabuilder/cli --version
+          npx @pwabuilder/cli --help
+        shell: bash
+
+      - name: List files in current directory
+        run: dir
+
       - name: Build EXE
-        run: npx @pwabuilder/cli . -p windows -l msix -d # 使用 npx 执行 pwabuilder，并指定 manifest 文件路径，增加调试日志输出
-        # 注意：您可能需要根据 PWABuilder CLI 的具体用法调整参数
-        # 例如，指定 manifest 文件路径：pwabuilder manifest.json -p windows -l msix
+        run: npx @pwabuilder/cli manifest.json -p windows -l msix
+        # 注意：移除了 -d 参数，因为 manifest.json 已明确指定
         
       - name: List files
         run: dir /s *.msix

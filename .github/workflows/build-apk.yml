@@ -30,6 +30,9 @@ jobs:
 
       - name: Build APK
         run: bubblewrap build --manifest twa-manifest.json
+        
+      - name: List files
+        run: ls -la
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v3

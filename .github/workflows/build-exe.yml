@@ -1,0 +1,40 @@
+name: Build PWA to EXE
+
+on:
+  push:
+    branches:
+      - main # 或者您的主分支名称
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    runs-on: windows-latest # PWABuilder 生成 Windows 应用通常需要 Windows 环境
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # 您可以根据需要调整 Node.js 版本
+
+      - name: Install PWABuilder CLI
+        run: npm install -g @pwabuilder/cli
+
+      - name: Build EXE
+        run: pwabuilder . -p windows -l msix # 假设您的 PWA 在当前目录，并指定平台为 windows，打包格式为 msix
+        # 注意：您可能需要根据 PWABuilder CLI 的具体用法调整参数
+        # 例如，指定 manifest 文件路径：pwabuilder manifest.json -p windows -l msix
+        
+      - name: List files
+        run: dir /s *.msix
+
+      - name: Upload EXE artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pwa-exe
+          path: |
+            **/*.msix
+            **/*.exe
+          # PWABuilder 生成的文件可能在不同位置，使用通配符匹配所有可能的文件

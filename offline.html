@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订阅管理 - 离线模式</title>
+    <meta name="theme-color" content="#3498db">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-color: #f8f9fa;
+            --bg-light: #ffffff;
+            --border-color: #dee2e6;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .offline-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            max-width: 600px;
+        }
+        
+        .card {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 2rem;
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .card ul {
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+        
+        .card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .retry-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .retry-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.2rem 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: #fff;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我的订阅服务</h1>
+    </header>
+    
+    <main>
+        <div class="offline-icon">📶</div>
+        <h2>您当前处于离线状态</h2>
+        <p>无法连接到网络。您仍然可以查看已缓存的订阅信息，但部分功能可能受限。</p>
+        
+        <button class="retry-button" id="retry-button">重试连接</button>
+        
+        <div class="card">
+            <h3>离线模式下可用的功能：</h3>
+            <ul>
+                <li>查看已保存的订阅列表</li>
+                <li>查看订阅详情和到期状态</li>
+                <li>查看本地缓存的汇率数据</li>
+            </ul>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 订阅管理应用</p>
+    </footer>
+    
+    <script>
+        // 检查网络连接状态
+        function checkConnection() {
+            if (navigator.onLine) {
+                window.location.href = './index.html';
+            }
+        }
+        
+        // 添加事件监听器
+        window.addEventListener('online', checkConnection);
+        
+        // 重试按钮点击事件
+        document.getElementById('retry-button').addEventListener('click', () => {
+            checkConnection();
+            if (!navigator.onLine) {
+                alert('仍然无法连接到网络，请检查您的网络连接。');
+            }
+        });
+    </script>
+</body>
+</html>

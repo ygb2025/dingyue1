@@ -1,0 +1,1397 @@
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #2ecc71;
+    --secondary-dark: #27ae60;
+    --accent-color: #f39c12;
+    --accent-dark: #e67e22;
+    --danger-color: #e74c3c;
+    --danger-dark: #c0392b;
+    --warning-color: #f1c40f;
+    --warning-dark: #f39c12;
+    --text-color: #333;
+    --text-light: #666;
+    --bg-color: #f8f9fa;
+    --bg-light: #ffffff;
+    --bg-dark: #e9ecef;
+    --border-color: #dee2e6;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+    --accent-color-hover: #0056b3;
+    --primary-button-bg: var(--accent-color);
+    --primary-button-text: #ffffff;
+    --primary-button-hover-bg: var(--accent-color-hover);
+    --secondary-button-bg: #6c757d;
+    --secondary-button-text: #ffffff;
+    --secondary-button-hover-bg: #5a6268;
+    --danger-color-hover: #c82333;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --modal-bg: rgba(0, 0, 0, 0.5);
+    --modal-content-bg: var(--bg-primary);
+    --input-bg: var(--bg-primary);
+    --input-border: var(--border-color);
+    --card-bg: var(--bg-primary);
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --link-color: var(--accent-color);
+    --link-hover-color: var(--accent-color-hover);
+    --scrollbar-thumb-bg: #adb5bd;
+    --scrollbar-track-bg: var(--bg-light);
+    --accent-color-rgb: 0, 123, 255;
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: var(--transition);
+    padding-bottom: 60px; /* 为固定的footer留出空间 */
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* 设置按钮和面板样式 */
+.settings-toggle {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settings-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.settings-panel {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin: 0 auto 20px;
+    max-width: 800px;
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-panel h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.settings-panel div {
+    margin-bottom: 20px;
+}
+
+.settings-panel label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.settings-panel input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    font-size: 1em;
+}
+
+.settings-panel input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* 为API Key输入框下的提示文本添加一些间距 */
+.settings-panel div .form-hint {
+    margin-top: 6px;
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.settings-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.settings-panel button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-panel button.secondary-button {
+    background-color: var(--accent-color);
+}
+
+.settings-panel button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.settings-panel button.secondary-button:hover {
+    background-color: var(--accent-dark);
+}
+
+.settings-panel button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rates-status {
+    margin-top: 15px;
+    font-size: 0.95em;
+    color: var(--text-light);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-dark);
+    text-align: center;
+}
+
+.rates-status.success {
+    color: var(--secondary-color);
+    background-color: rgba(46, 204, 113, 0.1);
+}
+
+.rates-status.error {
+    color: var(--danger-color);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.checkbox-container {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 12px;
+    width: auto;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    display: inline;
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-color);
+}
+
+.api-usage-info {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.api-usage-info p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.api-usage-info p:last-child {
+    border-bottom: none;
+}
+
+.api-usage-info span {
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: rgba(52, 152, 219, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+/* 设置面板中的分节标题 */
+.settings-section-title {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin: 25px 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 通知设置样式 */
+.notification-settings {
+    background-color: var(--bg-dark);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.notification-settings button {
+    margin-top: 15px;
+    width: auto;
+    padding: 8px 15px;
+}
+
+.notification-status {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--text-light);
+    padding: 8px;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-light);
+}
+
+.notification-status.success {
+    color: var(--secondary-color);
+    background-color: rgba(46, 204, 113, 0.1);
+}
+
+.notification-status.error {
+    color: var(--danger-color);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* 表单提示文本样式 */
+.form-hint {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+    font-style: italic;
+}
+
+/* 本地货币换算价格样式 */
+.local-price {
+    font-weight: bold;
+    color: #337ab7;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+main {
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 30px auto;
+    background: var(--bg-light);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-light);
+    transition: var(--transition);
+}
+
+section:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+#add-subscription-form p,
+#subscription-list p {
+    font-style: italic;
+    color: var(--text-light);
+}
+
+/* 表单样式 */
+#add-subscription-form div {
+    margin-bottom: 18px;
+}
+
+#add-subscription-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+#add-subscription-form input[type="text"],
+#add-subscription-form input[type="number"],
+#add-subscription-form input[type="date"],
+#add-subscription-form input[type="url"],
+#add-subscription-form select,
+#add-subscription-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    background-color: var(--bg-light);
+}
+
+#add-subscription-form input:hover,
+#add-subscription-form select:hover,
+#add-subscription-form textarea:hover {
+    border-color: var(--primary-color);
+}
+
+#add-subscription-form input:focus,
+#add-subscription-form select:focus,
+#add-subscription-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    transform: translateY(-1px);
+}
+
+#add-subscription-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+#add-subscription-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#add-subscription-form button[type="submit"] {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#add-subscription-form button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transition: left 0.7s ease;
+}
+
+#add-subscription-form button[type="submit"]:hover {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#add-subscription-form button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+#add-subscription-form button[type="submit"]:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 订阅列表项样式 */
+.subscription-item {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, margin-left 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
+    touch-action: pan-y; /* 允许垂直滚动，但水平滑动会被捕获 */
+}
+
+/* 滑动状态 */
+.subscription-item.swiping {
+    cursor: grabbing;
+}
+
+/* 滑动删除状态 */
+.subscription-item.swipe-delete {
+    margin-left: 80px;
+    opacity: 0.7;
+    border-color: var(--danger-color);
+}
+
+/* 滑动删除确认按钮 */
+.swipe-delete-confirm {
+    position: absolute;
+    left: -80px;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    background-color: var(--danger-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.subscription-item.swipe-delete .swipe-delete-confirm {
+    opacity: 1;
+}
+
+/* 长按编辑状态 */
+.subscription-item.long-press-active {
+    transform: scale(0.98);
+    background-color: rgba(52, 152, 219, 0.1);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.subscription-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* 订阅条目头部样式 */
+.subscription-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.service-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: var(--border-radius);
+    object-fit: contain;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 3px;
+}
+
+.service-icon-placeholder {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.subscription-item h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.subscription-item p {
+    margin-bottom: 8px;
+    font-style: normal;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.subscription-item p strong {
+    color: var(--text-color);
+    margin-right: 8px;
+    min-width: 100px;
+}
+
+/* 订阅条目的到期状态样式 */
+.subscription-item.overdue {
+    border-left: 5px solid var(--danger-color);
+    background-color: rgba(231, 76, 60, 0.05);
+}
+
+.subscription-item.expiring-soon {
+    border-left: 5px solid var(--warning-color);
+    background-color: rgba(241, 196, 15, 0.05);
+}
+
+/* 添加警告图标 */
+.subscription-item.overdue .subscription-header::before,
+.subscription-item.expiring-soon .subscription-header::before {
+    content: "⚠️";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.2em;
+    opacity: 0.7;
+}
+
+.expiry-status {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 8px;
+    border-radius: var(--border-radius);
+    font-size: 0.8em;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.expiry-status.overdue {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.expiry-status.today {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.expiry-status.soon {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.expiry-status.ok {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* 订阅条目中的操作按钮 */
+.subscription-item .actions {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.subscription-item .actions button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.subscription-item .actions button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.subscription-item .actions button:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0) translate(-50%, -50%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+.subscription-item .actions button.delete-btn {
+    background-color: var(--danger-color);
+}
+
+.subscription-item .actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.subscription-item .actions button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 添加图标到按钮 */
+.subscription-item .actions button.edit-btn::before {
+    content: "✏️ ";
+    margin-right: 5px;
+}
+
+.subscription-item .actions button.delete-btn::before {
+    content: "🗑️ ";
+    margin-right: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 1.2rem 0;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    z-index: 100;
+}
+
+/* 提醒面板样式 */
+.notification-panel {
+    background-color: rgba(241, 196, 15, 0.1);
+    border: 1px solid var(--warning-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 0 auto 25px;
+    max-width: 900px;
+    box-shadow: var(--box-shadow);
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(241, 196, 15, 0.3);
+}
+
+.notification-header h3 {
+    margin: 0;
+    color: var(--warning-dark);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.notification-header h3::before {
+    content: "⚠️";
+    margin-right: 8px;
+}
+
+.close-notification {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--warning-dark);
+    cursor: pointer;
+    transition: var(--transition);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-notification:hover {
+    background-color: rgba(241, 196, 15, 0.2);
+    transform: rotate(90deg);
+}
+
+.notification-content {
+    color: var(--text-color);
+}
+
+/* 响应式调整 */
+@media (max-width: 900px) {
+    main {
+        margin: 20px 15px;
+        padding: 1rem;
+    }
+
+    .settings-panel, .notification-panel {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        margin: 15px 10px;
+        padding: 0.8rem;
+    }
+
+    header h1 {
+        font-size: 1.4em;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .subscription-item p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .subscription-item p strong {
+        margin-bottom: 3px;
+    }
+
+    .settings-actions {
+        flex-direction: column;
+    }
+
+    .settings-panel button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .subscription-item .actions {
+        flex-direction: column;
+    }
+
+    .subscription-item .actions button {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+}
+
+.notification-item {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.notification-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notification-item.overdue {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-left: 3px solid var(--danger-color);
+}
+
+.notification-item.expiring-soon {
+    background-color: rgba(241, 196, 15, 0.1);
+    border-left: 3px solid var(--warning-color);
+}
+
+.notification-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+    border-radius: var(--border-radius);
+    object-fit: contain;
+    background-color: white;
+    padding: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.notification-icon-placeholder {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.notification-text {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.notification-item strong {
+    font-weight: 600;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 3px;
+}
+
+/* 服务名称输入与预设选择按钮 */
+.form-group-service-name {
+    display: flex;
+    align-items: center;
+}
+
+.form-group-service-name input[type="text"] {
+    flex-grow: 1;
+    margin-right: 8px;
+}
+
+.preset-select-btn {
+    padding: 8px 12px;
+    background-color: #5dade2; /* 浅蓝色，与主题色协调 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em; /* 与输入框字体大小匹配 */
+    line-height: 1.5; /* 确保按钮高度与输入框接近 */
+}
+
+.preset-select-btn:hover {
+    background-color: #3498db;
+}
+
+/* 模态框基本样式 */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* 半透明黑色背景 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.close-modal-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-body {
+    padding-top: 15px;
+    max-height: 60vh; /* 限制模态框内容区域的最大高度 */
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body input[type="text"] {
+    width: calc(100% - 22px); /* 减去padding和border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.preset-service-list {
+    overflow-y: auto; /* 如果列表过长，允许滚动 */
+    border: 1px solid #eee;
+    border-radius: 4px;
+    flex-grow: 1; /* 占据剩余空间 */
+}
+
+.preset-service-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.preset-service-item:last-child {
+    border-bottom: none;
+}
+
+.preset-service-item:hover {
+    background-color: #f9f9f9;
+}
+
+.preset-service-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 4px; /* 图标也加个小圆角 */
+}
+
+.preset-service-item .item-name {
+    flex-grow: 1;
+}
+
+.preset-service-item .item-category {
+    font-size: 0.8em;
+    color: #777;
+    background-color: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 当没有预设服务时的提示 */
+.preset-service-list .no-results {
+    padding: 15px;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+}
+
+.chart-container {
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 30px; /* 给图表容器之间增加一些间距 */
+    box-shadow: var(--box-shadow);
+    height: 350px; /* 增加高度以适应更多控件 */
+    transition: height 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-container:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.chart-container h3::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--border-color);
+    margin-left: 10px;
+}
+
+.chart-controls {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px; /* 标签和选择框之间的间距 */
+}
+
+.chart-control-group {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.chart-controls label {
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.chart-controls select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-light);
+    font-size: 0.95em;
+    min-width: 150px; /* 给选择框一个最小宽度 */
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 30px; /* 为下拉箭头留出空间 */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.chart-controls select:hover {
+    border-color: var(--primary-color);
+}
+
+.chart-controls select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+body[data-theme="dark"] {
+    --bg-primary: #1e1e1e; /* 深灰色背景 */
+    --bg-secondary: #2a2a2a; /* 稍浅的深灰色 */
+    --bg-light: #3c3c3c; /* 更浅的深灰色，用于边框等 */
+    --text-primary: #e0e0e0; /* 亮灰色文字 */
+    --text-secondary: #b0b0b0; /* 稍暗的亮灰色文字 */
+    --text-muted: #888888;
+    --border-color: #444444;
+    --accent-color: #0097ff; /* 更亮的蓝色 */
+    --accent-color-hover: #007acc;
+    --primary-button-bg: var(--accent-color);
+    --primary-button-text: var(--bg-primary); /* 暗色背景下的亮色文字 */
+    --primary-button-hover-bg: var(--accent-color-hover);
+    --secondary-button-bg: #555555;
+    --secondary-button-text: var(--text-primary);
+    --secondary-button-hover-bg: #666666;
+    --danger-color: #f04141;
+    --danger-color-hover: #d93030;
+    --success-color: #30c255;
+    --warning-color: #ffd43b;
+    --info-color: #25b8cf;
+    --modal-bg: rgba(0, 0, 0, 0.7);
+    --modal-content-bg: var(--bg-secondary);
+    --input-bg: var(--bg-secondary);
+    --input-border: var(--border-color);
+    --card-bg: var(--bg-secondary);
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    --link-color: var(--accent-color);
+    --link-hover-color: var(--accent-color-hover);
+    --scrollbar-thumb-bg: #666666;
+    --scrollbar-track-bg: var(--bg-light);
+    --accent-color-rgb: 0, 151, 255;
+}
+
+/* 滚动条样式 (可选，但建议为暗色主题调整) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 页面切换动画 */
+.view-content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.view-content.slide-in {
+    animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0.5;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 触摸反馈 */
+.touch-active {
+    opacity: 0.7;
+    transform: scale(0.98);
+}
+
+/* 涟漪效果 */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 删除动画 */
+.subscription-item.deleting {
+    transition: all 0.3s ease;
+    overflow: hidden;
+    opacity: 0.5;
+    transform: translateX(-100%);
+}
+
+/* 响应式布局调整 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    .settings-toggle {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+    main {
+        padding: 10px;
+    }
+    section {
+        padding: 15px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="url"],
+    input[type="date"],
+    select,
+    textarea {
+        padding: 8px;
+        font-size: 0.95em;
+    }
+    button[type="submit"], .primary-button {
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+    .secondary-button {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+    .statistics-summary {
+        flex-direction: column;
+    }
+    .stat-card {
+        margin-bottom: 15px;
+        width: auto; /* Full width on small screens */
+    }
+    .chart-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .chart-controls select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-group-service-name {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-group-service-name input[type="text"] {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    .preset-select-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+body[data-theme="gemini-colorful"] {
+    /* Gemini 彩色主题变量 */
+    --bg-primary: #0d1117; /* 更深的类似GitHub暗模式的背景 */
+    --bg-secondary: #161b22; /* 卡片和分区的背景 */
+    --bg-light: #21262d;   /* 边框和较亮区域的背景 */
+    --text-primary: #c9d1d9; /* 主要文字颜色 */
+    --text-secondary: #8b949e; /* 次要文字颜色 */
+    --text-muted: #6a737d;
+    --border-color: #30363d;
+
+    /* Gemini 风格的多彩强调色 - 我们会主要用一个主强调色，其他用于点缀 */
+    --accent-color: #58a6ff; /* 主蓝色 */
+    --accent-color-hover: #388bfd;
+    --accent-color-rgb: 88, 166, 255;
+
+    --primary-button-bg: var(--accent-color);
+    --primary-button-text: #ffffff; /* 按钮文字用白色以保证对比度 */
+    --primary-button-hover-bg: var(--accent-color-hover);
+
+    --secondary-button-bg: #238636; /* 绿色作为次要按钮颜色 */
+    --secondary-button-text: #ffffff;
+    --secondary-button-hover-bg: #1a6c2e;
+
+    --danger-color: #f85149;
+    --danger-color-hover: #da3633;
+    --success-color: #3fb950; /* 沿用GitHub风格的成功色 */
+    --warning-color: #d29922; /* 沿用GitHub风格的警告色 */
+    --info-color: #58a6ff; /* 与主强调色一致 */
+
+    --modal-bg: rgba(13, 17, 23, 0.8); /* 半透明深色背景 */
+    --modal-content-bg: var(--bg-secondary);
+    --input-bg: var(--bg-light);
+    --input-border: var(--border-color);
+    --card-bg: var(--bg-secondary);
+    --card-shadow: 0 8px 24px rgba(0,0,0,0.4); /* 更明显的阴影 */
+    --link-color: var(--accent-color);
+    --link-hover-color: #79c0ff; /* 链接悬浮时更亮 */
+
+    --scrollbar-thumb-bg: #484f58;
+    --scrollbar-track-bg: var(--bg-light);
+
+    /* 特殊的头部背景 - 可以用渐变 */
+    --header-bg-gradient: linear-gradient(135deg, #1f6feb, #6c37cb);
+}
+
+/* 暗色主题调整 for category tags if needed, or ensure high contrast */
+body[data-theme="dark"] .category-tag {
+    color: var(--text-primary); /* Ensure text is readable on dark colored tags */
+}
+body[data-theme="dark"] .category-tag.other { background-color: #7f8c8d; }
+
+/* Gemini 彩色主题的分类标签颜色 */
+body[data-theme="gemini-colorful"] .category-tag {
+    color: #ffffff; /* 确保标签文字在彩色背景上可读 */
+}
+body[data-theme="gemini-colorful"] .category-tag.entertainment { background-color: #db61a2; /* 粉色 */ }
+body[data-theme="gemini-colorful"] .category-tag.work { background-color: #4a90e2;          /* 鲜蓝色 */ }
+body[data-theme="gemini-colorful"] .category-tag.education { background-color: #8359c9;      /* 紫色 */ }
+body[data-theme="gemini-colorful"] .category-tag.lifestyle { background-color: #50e3c2;      /* 青色 */ }
+body[data-theme="gemini-colorful"] .category-tag.utility { background-color: #f5a623;       /* 橙色 */ }
+body[data-theme="gemini-colorful"] .category-tag.other { background-color: #7f8c8d;        /* 保持灰色 */ }

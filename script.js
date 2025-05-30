@@ -6,7 +6,7 @@ console.log("script.js loaded");
 // 注册 Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
+        navigator.serviceWorker.register('./pwabuilder-sw.js')
             .then(registration => {
                 console.log('Service Worker 注册成功，作用域: ', registration.scope);
             })

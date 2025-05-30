@@ -1,5 +1,6 @@
 {
   "name": "订阅管理",
+  "id": "subscription-manager",
   "short_name": "订阅管理",
   "description": "管理您的所有订阅服务，跟踪费用和到期日期",
   "lang": "zh-CN",
@@ -8,6 +9,10 @@
   "background_color": "#ffffff",
   "theme_color": "#3498db",
   "orientation": "portrait-primary",
+  "launch_handler": {
+    "client_mode": "navigate-new"
+  },
+  "dir": "ltr",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -56,5 +61,9 @@
     "utilities",
     "finance",
     "productivity"
-  ]
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "./",
+  "scope_extensions": []
 }

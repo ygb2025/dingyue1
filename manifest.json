@@ -61,7 +61,8 @@
     {
       "src": "screenshots/screenshot1.png",
       "sizes": "1280x720",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "categories": [

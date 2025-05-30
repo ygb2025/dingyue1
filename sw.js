@@ -15,7 +15,6 @@ const CORE_ASSETS = [
   '/icons/icon-144x144.png',
   '/icons/icon-152x152.png',
   '/icons/icon-192x192.png',
-  '/icons/icon-384x384.png',
   '/icons/icon-512x512.png',
   // 如果有字体文件或其他核心静态资源，也在这里列出
   'https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js' // Chart.js库也缓存起来
